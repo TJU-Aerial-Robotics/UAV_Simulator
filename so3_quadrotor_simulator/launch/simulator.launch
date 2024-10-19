@@ -8,8 +8,8 @@
         <param name="simulator/init_state_x" value="$(arg init_x)"/>
         <param name="simulator/init_state_y" value="$(arg init_y)"/>
         <param name="simulator/init_state_z" value="$(arg init_z)"/>
-        <remap from="~odom_juliett" to="/juliett/ground_truth/odom"/>
-        <remap from="~odom" to="/sim/odom"/>
+        <remap from="~odom_juliett" to="/juliett/ground_truth/odom"/> <!-- acceleration stored in angular velocity for simplicity -->
+        <remap from="~odom" to="/sim/odom"/>  <!-- standard ROS odometry message -->
         <remap from="~imu" to="/sim/imu"/>
         <remap from="~cmd" to="so3_cmd"/>
         <remap from="~force_disturbance" to="force_disturbance"/>    
