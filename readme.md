@@ -5,7 +5,7 @@
 **USE:**
 ```bash
 cd ${YOUR_WORKSPACE_PATH}/src
-git clone https://github.com/Lu-tju/UAV_Simulator
+git clone https://github.com/TJU-Aerial-Robotics/UAV_Simulator
 cd ../
 catkin_make
 source devel/setup.bash
