@@ -2,7 +2,7 @@
 import os
 import random
 
-N_uav = 5
+N_uav = 3
 
 launch_content = '<launch>\n'
 
@@ -10,11 +10,13 @@ for i in range(N_uav):
     random_x = random.randint(0, 10)
     random_y = random.randint(0, 10)
     random_z = 2
+    random_team = random.randint(0, 1)
     node_name = f'uav_{i}'
     launch_content += f"""
   <group ns="{node_name}">
     <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="simulator" output="screen">
       <param name="rate/odom" value="50.0"/>
+      <param name="team" value="{random_team}"/>
       <param name="simulator/init_state_x" value="{random_x}"/>
       <param name="simulator/init_state_y" value="{random_y}"/>
       <param name="simulator/init_state_z" value="{random_z}"/>

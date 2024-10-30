@@ -3,7 +3,8 @@
   <group ns="uav_0">
     <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="simulator" output="screen">
       <param name="rate/odom" value="50.0"/>
-      <param name="simulator/init_state_x" value="10"/>
+      <param name="team" value="0"/>
+      <param name="simulator/init_state_x" value="5"/>
       <param name="simulator/init_state_y" value="2"/>
       <param name="simulator/init_state_z" value="2"/>
       <remap from="~odom_juliett" to="/uav_0/sim/odom_juliett"/>
@@ -13,7 +14,7 @@
     </node>
 
     <node pkg="nodelet" type="nodelet" args="standalone so3_control/SO3ControlNodelet" name="controller" required="true" output="screen">
-        <param name="so3_control/init_state_x" value="10"/>
+        <param name="so3_control/init_state_x" value="5"/>
         <param name="so3_control/init_state_y" value="2"/>
         <param name="so3_control/init_state_z" value="2"/>
         <remap from="~odom" to="/uav_0/sim/odom"/>
@@ -35,8 +36,9 @@
   <group ns="uav_1">
     <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="simulator" output="screen">
       <param name="rate/odom" value="50.0"/>
-      <param name="simulator/init_state_x" value="10"/>
-      <param name="simulator/init_state_y" value="6"/>
+      <param name="team" value="0"/>
+      <param name="simulator/init_state_x" value="0"/>
+      <param name="simulator/init_state_y" value="2"/>
       <param name="simulator/init_state_z" value="2"/>
       <remap from="~odom_juliett" to="/uav_1/sim/odom_juliett"/>
       <remap from="~odom" to="/uav_1/sim/odom"/>
@@ -45,8 +47,8 @@
     </node>
 
     <node pkg="nodelet" type="nodelet" args="standalone so3_control/SO3ControlNodelet" name="controller" required="true" output="screen">
-        <param name="so3_control/init_state_x" value="10"/>
-        <param name="so3_control/init_state_y" value="6"/>
+        <param name="so3_control/init_state_x" value="0"/>
+        <param name="so3_control/init_state_y" value="2"/>
         <param name="so3_control/init_state_z" value="2"/>
         <remap from="~odom" to="/uav_1/sim/odom"/>
         <remap from="~imu" to="/uav_1/sim/imu"/>
@@ -67,8 +69,9 @@
   <group ns="uav_2">
     <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="simulator" output="screen">
       <param name="rate/odom" value="50.0"/>
+      <param name="team" value="1"/>
       <param name="simulator/init_state_x" value="1"/>
-      <param name="simulator/init_state_y" value="7"/>
+      <param name="simulator/init_state_y" value="0"/>
       <param name="simulator/init_state_z" value="2"/>
       <remap from="~odom_juliett" to="/uav_2/sim/odom_juliett"/>
       <remap from="~odom" to="/uav_2/sim/odom"/>
@@ -78,76 +81,12 @@
 
     <node pkg="nodelet" type="nodelet" args="standalone so3_control/SO3ControlNodelet" name="controller" required="true" output="screen">
         <param name="so3_control/init_state_x" value="1"/>
-        <param name="so3_control/init_state_y" value="7"/>
+        <param name="so3_control/init_state_y" value="0"/>
         <param name="so3_control/init_state_z" value="2"/>
         <remap from="~odom" to="/uav_2/sim/odom"/>
         <remap from="~imu" to="/uav_2/sim/imu"/>
         <remap from="~position_cmd" to="/uav_2/so3_control/pos_cmd"/>
         <remap from="~so3_cmd" to="/uav_2/so3_cmd"/>
-        <rosparam file="$(find so3_control)/config/gains_hummingbird.yaml"/>
-        <rosparam file="$(find so3_control)/config/corrections_hummingbird.yaml"/>
-        <param name="mass" value="0.98"/>
-        <param name="use_angle_corrections " value="false"/>
-        <param name="use_external_yaw "      value="false"/>
-        <param name="gains/rot/z" value="1.0"/>    
-        <param name="gains/ang/z" value="0.1"/>     
-        <param name="record_log" value = "false"/>  
-        <param name="PID_logger_file_name" value = "$(find so3_control)/logger/"/>   
-    </node>
-  </group>  
-  
-  <group ns="uav_3">
-    <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="simulator" output="screen">
-      <param name="rate/odom" value="50.0"/>
-      <param name="simulator/init_state_x" value="9"/>
-      <param name="simulator/init_state_y" value="3"/>
-      <param name="simulator/init_state_z" value="2"/>
-      <remap from="~odom_juliett" to="/uav_3/sim/odom_juliett"/>
-      <remap from="~odom" to="/uav_3/sim/odom"/>
-      <remap from="~imu" to="/uav_3/sim/imu"/>
-      <remap from="~cmd" to="/uav_3/so3_cmd"/>   
-    </node>
-
-    <node pkg="nodelet" type="nodelet" args="standalone so3_control/SO3ControlNodelet" name="controller" required="true" output="screen">
-        <param name="so3_control/init_state_x" value="9"/>
-        <param name="so3_control/init_state_y" value="3"/>
-        <param name="so3_control/init_state_z" value="2"/>
-        <remap from="~odom" to="/uav_3/sim/odom"/>
-        <remap from="~imu" to="/uav_3/sim/imu"/>
-        <remap from="~position_cmd" to="/uav_3/so3_control/pos_cmd"/>
-        <remap from="~so3_cmd" to="/uav_3/so3_cmd"/>
-        <rosparam file="$(find so3_control)/config/gains_hummingbird.yaml"/>
-        <rosparam file="$(find so3_control)/config/corrections_hummingbird.yaml"/>
-        <param name="mass" value="0.98"/>
-        <param name="use_angle_corrections " value="false"/>
-        <param name="use_external_yaw "      value="false"/>
-        <param name="gains/rot/z" value="1.0"/>    
-        <param name="gains/ang/z" value="0.1"/>     
-        <param name="record_log" value = "false"/>  
-        <param name="PID_logger_file_name" value = "$(find so3_control)/logger/"/>   
-    </node>
-  </group>  
-  
-  <group ns="uav_4">
-    <node pkg="so3_quadrotor_simulator" type="quadrotor_simulator_so3" name="simulator" output="screen">
-      <param name="rate/odom" value="50.0"/>
-      <param name="simulator/init_state_x" value="3"/>
-      <param name="simulator/init_state_y" value="4"/>
-      <param name="simulator/init_state_z" value="2"/>
-      <remap from="~odom_juliett" to="/uav_4/sim/odom_juliett"/>
-      <remap from="~odom" to="/uav_4/sim/odom"/>
-      <remap from="~imu" to="/uav_4/sim/imu"/>
-      <remap from="~cmd" to="/uav_4/so3_cmd"/>   
-    </node>
-
-    <node pkg="nodelet" type="nodelet" args="standalone so3_control/SO3ControlNodelet" name="controller" required="true" output="screen">
-        <param name="so3_control/init_state_x" value="3"/>
-        <param name="so3_control/init_state_y" value="4"/>
-        <param name="so3_control/init_state_z" value="2"/>
-        <remap from="~odom" to="/uav_4/sim/odom"/>
-        <remap from="~imu" to="/uav_4/sim/imu"/>
-        <remap from="~position_cmd" to="/uav_4/so3_control/pos_cmd"/>
-        <remap from="~so3_cmd" to="/uav_4/so3_cmd"/>
         <rosparam file="$(find so3_control)/config/gains_hummingbird.yaml"/>
         <rosparam file="$(find so3_control)/config/corrections_hummingbird.yaml"/>
         <param name="mass" value="0.98"/>

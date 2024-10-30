@@ -226,6 +226,9 @@ main(int argc, char** argv)
   n.param("simulator/init_state_x", _init_x, 0.0);
   n.param("simulator/init_state_y", _init_y, 0.0);
   n.param("simulator/init_state_z", _init_z, 1.0);
+
+  int team;
+  n.param("team", team, 0);
   std::string mesh_resource;
   n.param("mesh_resource", mesh_resource, std::string("package://so3_quadrotor_simulator/meshes/hummingbird.mesh"));
 
@@ -260,7 +263,7 @@ main(int argc, char** argv)
 
   sensor_msgs::Imu imu;
   imu.header.frame_id = "world";
-
+  
   visualization_msgs::Marker meshROS;
   meshROS.header.frame_id = "world";
   meshROS.ns = "mesh";
@@ -272,9 +275,16 @@ main(int argc, char** argv)
   meshROS.scale.y = scale;
   meshROS.scale.z = scale;
   meshROS.color.a = 1;
-  meshROS.color.r = 0.8;
-  meshROS.color.g = 0.8;
-  meshROS.color.b = 0.8;
+  if (team == 0){
+    meshROS.color.r = 0.3;
+    meshROS.color.g = 0.7;
+    meshROS.color.b = 1.0;
+  }
+  else{
+    meshROS.color.r = 1.0;
+    meshROS.color.g = 0.5;
+    meshROS.color.b = 0.5;
+  }
   meshROS.mesh_resource = mesh_resource;
 
   ros::Time next_odom_pub_time = ros::Time::now();
