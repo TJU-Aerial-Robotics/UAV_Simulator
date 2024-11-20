@@ -46,3 +46,14 @@ cmd.yaw_dot = yawdot;
 
 pos_cmd_pub.publish(cmd);
 ```
+
+5. some Python example
+
+5.1 pub control command 
+```
+python ./src/example/command_pub.py
+```
+5.2 pub Voronoi
+```
+python ./src/example/boundary_pub.py
+```

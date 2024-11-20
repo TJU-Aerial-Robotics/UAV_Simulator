@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Grid1
       Splitter Ratio: 0.5
     Tree Height: 1079
   - Class: rviz/Selection
@@ -35,7 +36,7 @@ Visualization Manager:
   Class: ""
   Displays:
     - Alpha: 0.5
-      Cell Size: 1
+      Cell Size: 2
       Class: rviz/Grid
       Color: 160; 160; 164
       Enabled: true
@@ -96,9 +97,17 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: UAV_VIS
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /boundary
+      Name: Marker
+      Namespaces:
+        lines: true
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
-    Background Color: 46; 52; 54
+    Background Color: 255; 255; 255
     Default Light: true
     Fixed Frame: world
     Frame Rate: 30
@@ -123,7 +132,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -7.450580596923828e-09
+      Angle: -6.705522537231445e-08
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -133,10 +142,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 74.70089721679688
+      Scale: 52.121826171875
       Target Frame: <Fixed Frame>
-      X: -0.3202202022075653
-      Y: 0.46010011434555054
+      X: -0.805076003074646
+      Y: 0.1025545597076416
     Saved: ~
 Window Geometry:
   Displays:
